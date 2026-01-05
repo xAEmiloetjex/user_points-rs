@@ -6,17 +6,30 @@ type PT = kitten::PointTypes;
 fn main() {
     let mut amber = kitten::Kitten::new("Amber", 19, 69420.0);
 
+// Add relations
     amber.new_relation("key");
     amber.new_relation("dark");
     amber.new_relation("ephy");
     amber.new_relation("greasygirl");
     amber.new_relation("kota");
 
+// Set HATE points
     amber.set_points  ("key", PT::HATE, 0.69);
     amber.set_points  ("dark", PT::HATE, 0.0);
     amber.set_points  ("ephy", PT::HATE, utils::MAX_FLOAT - 3.0);
     amber.set_points  ("greasygirl", PT::HATE, 0.1);
     amber.set_points  ("kota", PT::HATE, 1.0);
+
+// Set LOVE points.
+
+// Set FRIEND points.
+    amber.set_points("key", PT::FRIEND, 69.0);
+    amber.set_points("greasygirl", PT::FRIEND, 69.0);
+    amber.set_points("ephy", PT::FRIEND, 69.0);
+
+// Set SILLY points.
+    amber.set_points("ephy", PT::SILLY, (utils::MAX_FLOAT / 256.0) / 256.0);
+
 
     let names = amber.names.clone();
 
