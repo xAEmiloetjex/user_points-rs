@@ -35,6 +35,7 @@ fn main() {
 
 
     let names = amber.names.clone();
+    let verbose = false;
 
     for name in names.iter() {
         let hate_p = amber.get_points(name, PT::HATE);
@@ -44,10 +45,14 @@ fn main() {
         let love_p = amber.get_points(name, PT::LOVE);
 
         println!("{} points for: {}", amber.name, name);
-                            println!("  - hate: {}",    hate_p);
-        if silly_p > 0.0  { println!("  - silly: {}",   silly_p);  }
-        if friend_p > 0.0 { println!("  - friend: {}",  friend_p); }
-        if crush_p > 0.0  { println!("  - crush: {}",   crush_p);  }
-        if love_p > 0.0   { println!("  - love: {}",    love_p);   } 
+            println!("  - hate: {}",    hate_p);
+        if silly_p > 0.0 ||  silly_p < 0.0  || verbose == true
+            { println!("  - silly: {}",   silly_p);  }
+        if friend_p > 0.0 || friend_p < 0.0 || verbose == true
+            { println!("  - friend: {}",  friend_p); }
+        if crush_p > 0.0 ||  crush_p  < 0.0 || verbose == true
+            { println!("  - crush: {}",   crush_p);  }
+        if love_p > 0.0 ||   love_p < 0.0   || verbose == true
+            { println!("  - love: {}",    love_p);   } 
     }
 }
