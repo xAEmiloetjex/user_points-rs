@@ -11,11 +11,6 @@ pub enum PointTypes {
     LOVE,
 }
 
-// #[derive(Serialize, Deserialize, Debug, Clone)]
-// pub struct SRelPoints {
-
-// }
-
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct SRelation {
     p_hate: PointT,
@@ -113,5 +108,4 @@ impl Kitten {
         }
         points
     }
-
 }
