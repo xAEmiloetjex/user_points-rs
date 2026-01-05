@@ -15,6 +15,7 @@ fn main() {
     amber.set_points  ("key", PT::HATE, 0.69);
     amber.set_points  ("dark", PT::HATE, 0.0);
     amber.set_points  ("ephy", PT::HATE, utils::MAX_FLOAT - 3.0);
+    amber.set_points  ("greasygirl", PT::HATE, 0.1);
     amber.set_points  ("kota", PT::HATE, 1.0);
 
     let names = amber.names.clone();
