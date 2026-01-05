@@ -1,0 +1,1 @@
+pub const MAX_FLOAT: f64 = 2147483647.0;
