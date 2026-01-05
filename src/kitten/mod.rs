@@ -5,9 +5,10 @@ pub type PointT = f64;
 
 pub enum PointTypes {
     HATE,
-    LOVE,
+    SILLY,
     FRIEND,
-    SILLY
+    CRUSH,
+    LOVE,
 }
 
 // #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -18,9 +19,10 @@ pub enum PointTypes {
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct SRelation {
     p_hate: PointT,
-    p_love: PointT,
-    p_friend: PointT,
     p_silly: PointT,
+    p_friend: PointT,
+    p_crush: PointT,
+    p_love: PointT,
 }
 
 #[allow(dead_code)]
@@ -47,9 +49,10 @@ impl Kitten {
     pub fn new_relation(&mut self, name: &str) {
         self.relations.insert(name.to_string(), SRelation {
             p_hate: 0.0,
-            p_love: 0.0,
-            p_friend: 0.0,
             p_silly: 0.0,
+            p_friend: 0.0,
+            p_crush: 0.0,
+            p_love: 0.0,
         });
         self.names.push(name.to_string());
     }
@@ -68,6 +71,7 @@ impl Kitten {
             PointTypes::HATE    => rel.p_hate   = value,
             PointTypes::SILLY   => rel.p_silly  = value,
             PointTypes::FRIEND  => rel.p_friend = value,
+            PointTypes::CRUSH   => rel.p_crush  = value,
             PointTypes::LOVE    => rel.p_love   = value,
         }
         self.set_relation(name, rel);
@@ -79,6 +83,7 @@ impl Kitten {
             PointTypes::HATE    => rel.p_hate   = rel.p_hate + value,
             PointTypes::SILLY   => rel.p_silly  = rel.p_silly + value,
             PointTypes::FRIEND  => rel.p_friend = rel.p_friend + value,
+            PointTypes::CRUSH   => rel.p_crush  = rel.p_crush + value,
             PointTypes::LOVE    => rel.p_love   = rel.p_love + value,
         }
         self.set_relation(name, rel);
@@ -90,6 +95,7 @@ impl Kitten {
             PointTypes::HATE    => rel.p_hate   = rel.p_hate - value,
             PointTypes::SILLY   => rel.p_silly  = rel.p_silly - value,
             PointTypes::FRIEND  => rel.p_friend = rel.p_friend - value,
+            PointTypes::CRUSH   => rel.p_crush  = rel.p_crush - value,
             PointTypes::LOVE    => rel.p_love   = rel.p_love - value,
         }
         self.set_relation(name, rel);
@@ -102,6 +108,7 @@ impl Kitten {
             PointTypes::HATE    => points = rel.p_hate,
             PointTypes::SILLY   => points = rel.p_silly,
             PointTypes::FRIEND  => points = rel.p_friend,
+            PointTypes::CRUSH   => points = rel.p_crush,
             PointTypes::LOVE    => points = rel.p_love,
         }
         points

@@ -19,25 +19,35 @@ fn main() {
     amber.set_points  ("ephy", PT::HATE, utils::MAX_FLOAT - 3.0);
     amber.set_points  ("greasygirl", PT::HATE, 0.1);
     amber.set_points  ("kota", PT::HATE, 1.0);
-
-// Set LOVE points.
+    
+// Set SILLY points.
+    amber.set_points("ephy", PT::SILLY, (utils::MAX_FLOAT / 256.0) / 256.0);
 
 // Set FRIEND points.
     amber.set_points("key", PT::FRIEND, 69.0);
     amber.set_points("greasygirl", PT::FRIEND, 69.0);
     amber.set_points("ephy", PT::FRIEND, 69.0);
 
-// Set SILLY points.
-    amber.set_points("ephy", PT::SILLY, (utils::MAX_FLOAT / 256.0) / 256.0);
+// Set CRUSH points.
+
+// Set LOVE points.    
+
 
 
     let names = amber.names.clone();
 
     for name in names.iter() {
+        let hate_p = amber.get_points(name, PT::HATE);
+        let silly_p = amber.get_points(name, PT::SILLY);
+        let friend_p = amber.get_points(name, PT::FRIEND);
+        let crush_p = amber.get_points(name, PT::CRUSH);
+        let love_p = amber.get_points(name, PT::LOVE);
+
         println!("{} points for: {}", amber.name, name);
-        println!("  - hate: {}",    amber.get_points(name, PT::HATE));
-        println!("  - silly: {}",   amber.get_points(name, PT::SILLY));
-        println!("  - friend: {}",  amber.get_points(name, PT::FRIEND));
-        println!("  - love: {}",    amber.get_points(name, PT::LOVE));
+                            println!("  - hate: {}",    hate_p);
+        if silly_p > 0.0  { println!("  - silly: {}",   silly_p);  }
+        if friend_p > 0.0 { println!("  - friend: {}",  friend_p); }
+        if crush_p > 0.0  { println!("  - crush: {}",   crush_p);  }
+        if love_p > 0.0   { println!("  - love: {}",    love_p);   } 
     }
 }
